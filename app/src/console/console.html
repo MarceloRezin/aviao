@@ -1,0 +1,12 @@
+<div flex ng-controller="ConsoleCtrl">
+    <md-toolbar class="md-small-tb">
+        <div class="md-toolbar-tools">
+            <h3 flex >Console</h3>
+        </div>
+    </md-toolbar>
+    <md-content flex class="toolbar-content" style="overflow: auto; height: calc(100vh * 0.35 - 31px)">
+        <div flex style="margin: 5px;" ng-repeat="linha in historicoConsole">
+            <span ng-bind="linha"></span>
+        </div>
+    </md-content>
+</div>
