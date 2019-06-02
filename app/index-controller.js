@@ -5,7 +5,6 @@ var aviaoApp = angular.module('AviaoApp', ['ngMaterial', 'ngMessages'])
     .primaryPalette('indigo');
 })
 
-.controller('IndexCtrl', function($scope) {
-    $scope.alert = 'ABC';
-
+.controller('IndexCtrl', function($scope, Console) {
+    Console.push('Radar iniciado')
 });
