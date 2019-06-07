@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MarceloRezin/aviao/issues"
   },
-  "homepage": "https://github.com/MarceloRezin/aviao#readme"
+  "homepage": "https://github.com/MarceloRezin/aviao#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
 }
