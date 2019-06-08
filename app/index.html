@@ -19,6 +19,7 @@
     <script src="src/grid/grid-controller.js"></script>
     <script src="src/transformacao/transformacao-controller.js"></script>
     <script src="src/rastreamento/rastreamento-controller.js"></script>
+    <script src="src/radar/radar-controller.js"></script>
     <script src="src/model/utils/utils.js"></script>
     <script src="src/model/aviao/aviao.js"></script>
     <script src="src/model/aviao/aviao-service.js"></script>
@@ -33,8 +34,8 @@
         <div flex ng-include="'src/rastreamento/rastreamento.html'"></div>
       </div>
       <div flex layout="column">
-        <div flex="65" >
-          ISSO VAI SER UM CANVAS
+        <div flex="65">
+            <div ng-include="'src/radar/radar.html'"></div>
         </div>
         <div flex ng-include="'src/console/console.html'"></div>
       </div>
