@@ -4,9 +4,15 @@
             <h3 flex >Aviões</h3>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content">
+    <md-content flex class="toolbar-content" style="overflow: auto; height: calc(100vh * 0.40 - 30px)">
         <div flex style="margin: 5px" >
-            <span ng-bind="cde"></span>
+            <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="aviao in getAvioes()" flex layout="row">
+                <md-checkbox class="md-primary" ng-model="aviao.selecionado" aria-label="Selecionar Avião"></md-checkbox>
+                <p ng-bind="aviao.getMatricula()"></p>
+                <md-button class="md-icon-button" aria-label="Remover" ng-click="removerAviao($index)">
+                    <md-icon class="material-icons">delete</md-icon>
+                </md-button>
+            </md-list-item>
         </div>
     </md-content>
 </div>

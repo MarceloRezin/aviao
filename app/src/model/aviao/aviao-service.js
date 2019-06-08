@@ -30,10 +30,20 @@ aviaoApp.factory('AviaoService', function (Console) {
             return avioes.filter(_filterAviaoSelecionado);
         }
 
+        function _removeAviao(index) {
+            if(!index == null || index < 0){
+                throw 'Não foi informado um índice válido!';
+            }
+
+            var removido = avioes.splice(index, 1);
+            Console.push('Avião ' + removido[0].getMatricula() + ' removido;')
+        }
+
         return {
             addAviao: _addAviao,
             getAvioes: _getAvioes,
-            getAvioesSelecionados: _getAvioesSelecionados
+            getAvioesSelecionados: _getAvioesSelecionados,
+            removeAviao: _removeAviao
         };
     }
 
