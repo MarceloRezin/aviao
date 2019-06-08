@@ -5,8 +5,18 @@
         </div>
     </md-toolbar>
     <md-content flex class="toolbar-content">
-        <div flex style="margin: 5px" >
-            <span ng-bind="abc"></span>
+        <div flex style="margin: 5px" layout="row">
+            <div flex layout="row">
+                <md-input-container flex>
+                    <label>X</label>
+                    <input ng-model="title">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Y</label>
+                    <input ng-model="title">
+                </md-input-container>
+            </div>
+
         </div>
     </md-content>
 </div>
