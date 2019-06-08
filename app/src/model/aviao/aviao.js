@@ -61,6 +61,10 @@ aviaoApp.factory('Aviao', function(Utils) {
         return this.matricula;
     };
 
+    Aviao.prototype.isSelecionado = function () {
+        return this.selecionado;
+    };
+
     Aviao.prototype.inverterSelecao = function () {
         return this.selecionado = !this.selecionado;
     };
