@@ -4,9 +4,50 @@
             <h3 flex >Funções de Rastreamento</h3>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content">
+    <md-content flex class="toolbar-content" >
         <div flex style="margin: 5px" >
-            <span ng-bind="cde"></span>
+            <div layout="column" flex="100">
+
+                <form name="distAero">
+                    <md-input-container layout="row">
+                        <div layout="column" flex="100">
+                            <label>Distância Minima do Aeroporto </label>
+                            <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAeroporto" name="distanciaAeroporto" ng-required="distanciaAeroportoErro">
+                            <div ng-messages="distAero.distanciaAeroporto.$error" role="alert">
+                                <div ng-message="required">Distância é obrigatória</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-button ng-click="verificarDistAero()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                </form>
+
+                <form name="distAV">
+                    <md-input-container layout="row">
+                        <div layout="column" flex="100">
+                            <label>Distância Minima entre Aviçoes</label>
+                            <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAvioes" name="distanciaAvioes" ng-required="distanciaAvioesErro">
+                            <div ng-messages="distAV.distanciaAvioes.$error" role="alert">
+                                <div ng-message="required">Distância é obrigatória</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-button ng-click="verificarDistAv()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                </form>
+
+                <form name="tempoCol">
+                    <md-input-container layout="row">
+                        <div layout="column" flex="100">
+                            <label>Tempo Minimo Rota de </label>
+                            <input ng-focus="zeraCampos()" type="number" ng-model="tempoColisao" name="tempoColisao" ng-required="tempoColisaoErro">
+                            <div ng-messages="tempoCol.tempoColisao.$error" role="alert">
+                                <div ng-message="required">Distância é obrigatória</div>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-button ng-click="verificarTempoColisao()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                </form>
+
+            </div>
         </div>
     </md-content>
 </div>

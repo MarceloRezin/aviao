@@ -47,18 +47,18 @@
                     <div flex layout="row">
                         <md-input-container flex=50>
                             <label>Velocidade</label>
-                            <input type="number" ng-model="velocidade"name="velocidade" ng-required>
+                            <input type="number" ng-model="velocidade"name="velocidade" required>
                             <div ng-messages="input.velocidade.$error" role="alert">
                                 <div ng-message="required">Velocidade é obrigatório</div>
                             </div>
                         </md-input-container>
-                        <md-input-container flex=50>
-                            <label>Direção</label>
-                            <input type="number" ng-model="direcao" name="direcao" ng-required>
-                            <div ng-messages="input.direcao.$error" role="alert">
-                                <div ng-message="required">Direção é obrigatório</div>
-                            </div>
-                        </md-input-container>
+                            <md-input-container flex=50>
+                                <label>Direção</label>
+                                <input type="number" ng-model="direcao" name="direcao" required>
+                                <div ng-messages="input.direcao.$error" role="alert">
+                                    <div ng-message="required">Direção é obrigatório</div>
+                                </div>
+                            </md-input-container>
                     </div>
                 </div>
                 <div flex="15" layout="row" layout-align="end" style="align-items: center;">
