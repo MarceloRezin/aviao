@@ -4,70 +4,73 @@
             <h3 flex >Entrada de Dados</h3>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content" layout="row">
-        <form name="input" flex ng-submit="addAv()">
-            <div flex style="margin: 5px" layout="column">
-
-                <div flex="50" layout="column">
-                    <div flex layout="row" ng-hide="cb1">
-                        <md-input-container flex=50>
-                            <label>X</label>
-                            <input type="number" ng-model="x" name="x" ng-required="!cb1">
-                            <div ng-messages="input.x.$error" role="alert">
-                                <div ng-message="required">X é obrigatório</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex=50>
-                            <label>Y</label>
-                            <input type="number" ng-model="y" name="y" ng-required="!cb1">
-                            <div ng-messages="input.y.$error" role="alert">
-                                <div ng-message="required">Y é obrigatório</div>
-                            </div>
-                        </md-input-container>
+    <md-content class="toolbar-content" layout="column" flex style="overflow: auto; height: calc(100vh * 0.45 - 30px)">
+        <form flex name="formEntrada" layout="column" style="margin: 5px;" ng-submit="addAv()">
+            <div layout="row" ng-hide="switchPolar">
+                <md-input-container flex>
+                    <label>X</label>
+                    <input type="number" ng-model="x" name="x" ng-required="!switchPolar">
+                    <div ng-messages="formEntrada.x.$error" role="alert">
+                        <div ng-message="required">X é obrigatório</div>
+                        <div ng-message="number">X não é um número válido</div>
                     </div>
-
-                    <div flex layout="row" ng-show="cb1">
-                        <md-input-container flex=50>
-                            <label>Raio</label>
-                            <input type="number" ng-model="raio" name="raio" ng-required="cb1">
-                            <div ng-messages="input.raio.$error" role="alert">
-                                <div ng-message="required">Raio é obrigatório</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex=50>
-                            <label>Ângulo</label>
-                            <input type="number" ng-model="angulo" name="angulo" max="360" ng-required="cb1">
-                            <div ng-messages="input.angulo.$error" role="alert">
-                                <div ng-message="max">Ângulo deve ter no máximo 360º</div>
-                                <div ng-message="required">Ângulo é obrigatório</div>
-                            </div>
-                        </md-input-container>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Y</label>
+                    <input type="number" ng-model="y" name="y" ng-required="!switchPolar">
+                    <div ng-messages="formEntrada.y.$error" role="alert">
+                        <div ng-message="required">Y é obrigatório</div>
+                        <div ng-message="number">Y não é um número válido</div>
                     </div>
-
-                    <div flex layout="row">
-                        <md-input-container flex=50>
-                            <label>Velocidade</label>
-                            <input type="number" ng-model="velocidade"name="velocidade" required>
-                            <div ng-messages="input.velocidade.$error" role="alert">
-                                <div ng-message="required">Velocidade é obrigatório</div>
-                            </div>
-                        </md-input-container>
-                            <md-input-container flex=50>
-                                <label>Direção</label>
-                                <input type="number" ng-model="direcao" name="direcao" required>
-                                <div ng-messages="input.direcao.$error" role="alert">
-                                    <div ng-message="required">Direção é obrigatório</div>
-                                </div>
-                            </md-input-container>
+                </md-input-container>
+            </div>
+            <div layout="row" ng-show="switchPolar">
+                <md-input-container flex>
+                    <label>Raio</label>
+                    <input type="number" ng-model="raio" name="raio" ng-required="switchPolar">
+                    <div ng-messages="formEntrada.raio.$error" role="alert">
+                        <div ng-message="required">Raio é obrigatório</div>
+                        <div ng-message="number">Raio não é um número válido</div>
                     </div>
-                </div>
-                <div flex="15" layout="row" layout-align="end" style="align-items: center;">
-                    <md-switch md-invert ng-model="cb1" aria-label="Switch 1">
-                        Polar
-                    </md-switch>
-                    <md-button type="submit" class="md-raised md-primary" style="width: 150px; height: 20px;">Adicionar Avião</md-button>
-                </div>
-
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Ângulo</label>
+                    <input type="number" ng-model="angulo" name="angulo" min="0" max="360" ng-required="switchPolar">
+                    <div ng-messages="formEntrada.angulo.$error" role="alert">
+                        <div ng-message="required">Ângulo é obrigatório</div>
+                        <div ng-message="number">Ângulo não é um número válido</div>
+                        <div ng-message="min">Ângulo não pode ser menor que 0</div>
+                        <div ng-message="max">Ângulo não pode ser maior que 360</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container flex>
+                    <label>Velocidade</label>
+                    <input type="number" ng-model="velocidade" name="velocidade" required>
+                    <div ng-messages="formEntrada.velocidade.$error" role="alert">
+                        <div ng-message="required">Velocidade é obrigatório</div>
+                        <div ng-message="number">Velocidade não é um número válido</div>
+                    </div>
+                </md-input-container>
+                    <md-input-container flex>
+                        <label>Direção</label>
+                        <input type="number" ng-model="direcao" name="direcao" required min="0" max="360">
+                        <div ng-messages="formEntrada.direcao.$error" role="alert">
+                            <div ng-message="required">Direção é obrigatório</div>
+                            <div ng-message="number">Direção não é um número válido</div>
+                            <div ng-message="min">O ângulo da direção não pode ser menor que 0</div>
+                            <div ng-message="max">O ângulo da direção não pode ser maior que 360</div>
+                        </div>
+                </md-input-container>
+            </div>
+            <div flex="15" layout="row" layout-align="end">
+                <md-switch md-invert ng-model="switchPolar" aria-label="Switch 1">
+                    Polar
+                </md-switch>
+                <md-button type="submit" class="md-raised md-primary">
+                    Adicionar Avião
+                </md-button>
             </div>
         </form>
     </md-content>

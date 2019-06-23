@@ -4,7 +4,7 @@
             <h3 flex >Aviões</h3>
         </div>
     </md-toolbar>
-    <md-content flex class="toolbar-content" style="overflow: auto; height: calc(100vh * 0.65 - 30px)">
+    <md-content flex class="toolbar-content" style="overflow: auto; height: calc(100vh * 0.55 - 30px)">
         <div flex style="margin: 5px" >
             <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="aviao in getAvioes()" flex layout="row">
                 <md-checkbox class="md-primary" ng-model="aviao.selecionado" aria-label="Selecionar Avião"></md-checkbox>
