@@ -1,4 +1,20 @@
-aviaoApp.controller('TransformacaoCtrl', function($scope) {
+aviaoApp.controller('TransformacaoCtrl', function($scope, AviaoService, Aviao) {
 
-    $scope.cde = '345';
+    $scope.translandar = function() {
+
+    }
+
+    $scope.escalonar = function() {
+
+
+    }
+
+    $scope.rotacionar = function() {
+
+
+    }
+
+
+
+    
 });
