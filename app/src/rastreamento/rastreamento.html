@@ -6,19 +6,18 @@
     </md-toolbar>
     <md-content flex class="toolbar-content" >
         <div flex style="margin: 5px" >
-            <div layout="column" flex="100">
-
-                <form name="distAero">
-                    <md-input-container layout="row">
-                        <div layout="column" flex="100">
-                            <label>Distância Minima do Aeroporto </label>
-                            <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAeroporto" name="distanciaAeroporto" ng-required="distanciaAeroportoErro">
-                            <div ng-messages="distAero.distanciaAeroporto.$error" role="alert">
-                                <div ng-message="required">Distância é obrigatória</div>
-                            </div>
+            <div layout="column" flex>
+                <form name="distAero" layout="row">
+                    <md-input-container>
+                        <label>Dist. Min. Aeroporto </label>
+                        <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAeroporto" name="distanciaAeroporto" ng-required="distanciaAeroportoErro">
+                        <div ng-messages="distAero.distanciaAeroporto.$error" role="alert">
+                            <div ng-message="required">Distância é obrigatória</div>
                         </div>
                     </md-input-container>
-                    <md-button ng-click="verificarDistAero()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                    <md-button ng-click="verificarDistAero()" class="md-fab md-mini">
+                        <md-icon>keyboard_return</md-icon>
+                    </md-button>
                 </form>
 
                 <form name="distAV">
