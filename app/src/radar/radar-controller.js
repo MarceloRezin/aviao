@@ -7,6 +7,9 @@ aviaoApp.controller('RadarCtrl', function() {
     var ALTURA = parentCanvas.clientHeight;
     var LARGURA = parentCanvas.clientWidth;
 
+    var MEIA_ALTURA = ALTURA / 2;
+    var MEIA_LARGURA = LARGURA / 2;
+
     canvas.width = LARGURA;
     canvas.height = ALTURA;
 
@@ -15,41 +18,67 @@ aviaoApp.controller('RadarCtrl', function() {
         ctx.fillRect (0, 0, LARGURA, ALTURA );
     }
 
+    function desenhaCentro(){
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath();
+
+        ctx.translate(MEIA_LARGURA, MEIA_ALTURA);
+
+        ctx.arc(0,0,2,0,Math.PI*2,true);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.translate(- MEIA_LARGURA, - MEIA_ALTURA);
+    }
+
     function desenhaMarcacoes() {
-        ctx.strokeStyle = "#FFFFFF";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
         ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(LARGURA / 2,ALTURA / 2,40,0,Math.PI*2,true);
-        ctx.closePath();
-        ctx.stroke();
 
-        ctx.strokeStyle = "#FFFFFF";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(LARGURA / 2,ALTURA / 2,100,0,Math.PI*2,true);
-        ctx.closePath();
-        ctx.stroke();
+        var i;
+        for(i=0; i<4; i++){
+            ctx.beginPath();
+            ctx.arc(LARGURA / 2,ALTURA / 2,40 + (60 * i),0,Math.PI*2,true);
+            ctx.closePath();
+            ctx.stroke();
+        }
 
-        ctx.strokeStyle = "#FFFFFF";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(LARGURA / 2,ALTURA / 2,160,0,Math.PI*2,true);
-        ctx.closePath();
-        ctx.stroke();
+        i--;
 
-        ctx.strokeStyle = "#FFFFFF";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(LARGURA / 2,ALTURA / 2,220,0,Math.PI*2,true);
-        ctx.closePath();
-        ctx.stroke();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+        ctx.translate(LARGURA / 2, ALTURA / 2);
 
-        ctx.fillStyle = "#AA33DD";
-        ctx.fillRect (LARGURA / 2, ALTURA / 2, 1, 1  );
+        for(var j=0; j<8; j++){
+            ctx.fillRect (0, -1, 40 + (60 * i) , 2);
+            ctx.rotate(  45 *   Math.PI / 180);
+        }
+
+        ctx.rotate(  0);
+
+        for(var k=0; k<24; k++){
+            ctx.fillRect (40 + (60 * i), -1, 10 , 2);
+            ctx.rotate(  15 *   Math.PI / 180);
+        }
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = '10px serif';
+
+        ctx.rotate(  0);
+
+        for(var l=90, m= 0; m<18; l+=15, m++){
+            ctx.fillText(l, -6,  - (55 + (60 * i)));
+            ctx.rotate(  - 15 * Math.PI / 180);
+        }
+
+        for(var n=0, o= 0; o<6; n+=15, o++){
+            ctx.fillText(n, -6,  - (55 + (60 * i)));
+            ctx.rotate(  - 15 * Math.PI / 180);
+        }
     }
 
     function render() {
         desenhaFundo();
+        desenhaCentro();
         desenhaMarcacoes();
     }
 
