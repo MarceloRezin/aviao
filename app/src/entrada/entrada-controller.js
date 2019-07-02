@@ -1,6 +1,15 @@
 aviaoApp.controller('EntradaCtrl', function($scope, AviaoService, Aviao) {
     $scope.cb1 = false;
 
+    $scope.limpaCampos = function(){
+      $scope.raio="";
+      $scope.angulo="";
+      $scope.x="";
+      $scope.y="";
+      $scope.formEntrada.$setUntouched();
+      $scope.formEntrada.$setPristine();
+    }
+
     $scope.addAv = function() {
         var aviao = new Aviao();
         if($scope.switchPolar == true){
