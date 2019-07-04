@@ -23,13 +23,8 @@ aviaoApp.controller('TransformacaoCtrl', function($scope, AviaoService, Aviao) {
         var lis = AviaoService.getAvioesSelecionados();
         for(var i = 0; i < lis.length; i++){
             lis[i].rotacionar($scope.xRotacionar, $scope.yRotacionar, $scope.anguloRotacionar);
-            console.log(lis[i]);
-
         }
 
-
     }
-
-
     
 });

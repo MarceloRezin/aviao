@@ -82,7 +82,6 @@ aviaoApp.factory('Aviao', function(Utils) {
     Aviao.prototype.rotacionar = function (x, y, angulo) {
         this.x = x * Math.cos(angulo * Math.PI / 180) - y * Math.sin(angulo * Math.PI / 180);
         this.y = y * Math.cos(angulo * Math.PI / 180) + x * Math.sin(angulo * Math.PI / 180);
-
     };
 
     return Aviao;
