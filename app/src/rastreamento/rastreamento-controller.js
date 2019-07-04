@@ -4,9 +4,9 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
         if($scope.distanciaAeroporto == null || $scope.distanciaAeroporto === "undefined"){
             $scope.distanciaAeroportoErro = true;
         }else{
-          var av =  AviaoService.getAvioesSelecionados();
+          var avioesSelecionados =  AviaoService.getAvioesSelecionados();
           var avioesDistMin = []
-          av.forEach(function(element) {
+          avioesSelecionados.forEach(function(element) {
             if(element.getRaio() <= $scope.distanciaAeroporto){
               avioesDistMin.push(element);
               Console.push('Avião '+ element.getMatricula() +', está a '+ Math.ceil(element.getRaio()) +' KM da base.');
@@ -21,7 +21,19 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
         if($scope.distanciaAvioes == null || $scope.distanciaAvioes === "undefined"){
             $scope.distanciaAvioesErro = true;
         }else{
-            alert("Distancia Minima Entre Aviões: " + $scope.distanciaAvioes)
+          var avioesSelecionados =  AviaoService.getAvioesSelecionados();
+          var todosAvioes = [];
+          todosAvioes = AviaoService.getAvioes();
+          avioesSelecionados.forEach(function(avSelecionados) {
+            todosAvioes.forEach(function(avTodos) {
+              //result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
+              if(avTodos.getMatricula() == avSelecionados.getMatricula()){
+                todosAvioes.splice(todosAvioes.indexOf(avTodos), 1);
+              }
+            });
+            console.log(todosAvioes);
+          });
+          alert("Distancia Minima Entre Aviões: " + $scope.distanciaAvioes)
         }
     }
 
