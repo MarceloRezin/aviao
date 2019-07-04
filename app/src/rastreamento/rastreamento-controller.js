@@ -22,16 +22,15 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
             $scope.distanciaAvioesErro = true;
         }else{
           var avioesSelecionados =  AviaoService.getAvioesSelecionados();
-          var todosAvioes = [];
-          todosAvioes = AviaoService.getAvioes();
+          var todosAvioes = AviaoService.getAvioes().slice();
           avioesSelecionados.forEach(function(avSelecionados) {
             todosAvioes.forEach(function(avTodos) {
-              //result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
+              result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
+              console.log(result);
               if(avTodos.getMatricula() == avSelecionados.getMatricula()){
                 todosAvioes.splice(todosAvioes.indexOf(avTodos), 1);
               }
             });
-            console.log(todosAvioes);
           });
           alert("Distancia Minima Entre Aviões: " + $scope.distanciaAvioes)
         }
