@@ -5,22 +5,22 @@
         </div>
     </md-toolbar>
 
-    <md-content class="toolbar-content">
+    <md-content class="toolbar-content" style="overflow: auto; height: calc(100vh * 0.5 - 31px)">
 
-            <form flex name="translandar" layout="row" style="margin: 5px;" ng-submit="translandar()">
+            <form name="formTranslandar" layout="row" ng-submit="translandar()">
                 <div layout="row">
-                    <md-input-container layout="row" flex="50">
+                    <md-input-container flex="50">
                         <label>X</label>
-                        <input type="number" ng-model="xTranslandar" name="xTranslandar">
-                        <div ng-messages="translandar.x.$error" role="alert">
+                        <input type="number" ng-model="xTranslandar" name="xTranslandar" required>
+                        <div ng-messages="formTranslandar.xTranslandar.$error" role="alert">
                             <div ng-message="required">X é obrigatório</div>
                             <div ng-message="number">X não é um número válido</div>
                         </div>
                     </md-input-container>
-                    <md-input-container layout="row" flex="50">
+                    <md-input-container  flex="50">
                         <label>Y</label>
-                        <input type="number" ng-model="yTranslandar" name="yTranslandar">
-                        <div ng-messages="translandar.y.$error" role="alert">
+                        <input type="number" ng-model="yTranslandar" name="yTranslandar"  required>
+                        <div ng-messages="formTranslandar.yTranslandar.$error" role="alert">
                             <div ng-message="required">Y é obrigatório</div>
                             <div ng-message="number">Y não é um número válido</div>
                         </div>
@@ -29,44 +29,44 @@
                 <md-button type="submit" class="md-raised md-primary" style="width: 250px; height: 20px; top: 8px">Translandar
                 </md-button>
             </form>
-
-            <form flex name="escalonar" layout="row" style="margin: 5px;" ng-submit="escalonar()">
+            <md-divider></md-divider>
+            <form name="formEscalonar" layout="row" ng-submit="escalonar()">
                 <div layout="row">
-                    <md-input-container layout="row" flex="50">
+                    <md-input-container  flex="50">
                         <label>X</label>
-                        <input type="number" ng-model="xEscalonar" name="xEscalonar">
-                        <div ng-messages="escalonar.x.$error" role="alert">
+                        <input type="number" step="0.01" ng-model="xEscalonar"  name="xEscalonar" required>
+                        <div ng-messages="formEscalonar.xEscalonar.$error" role="alert">
                             <div ng-message="required">X é obrigatório</div>
                             <div ng-message="number">X não é um número válido</div>
                         </div>
                     </md-input-container>
-                    <md-input-container layout="row" flex="50">
+                    <md-input-container  flex="50">
                         <label>Y</label>
-                        <input type="number" ng-model="yEscalonar" name="yEscalonar">
-                        <div ng-messages="escalonar.y.$error" role="alert">
+                        <input type="number" step="0.01"  ng-model="yEscalonar" name="yEscalonar" required> 
+                        <div ng-messages="formEscalonar.yEscalonar.$error" role="alert">
                             <div ng-message="required">Y é obrigatório</div>
                             <div ng-message="number">Y não é um número válido</div>
                         </div>
                     </md-input-container>
                 </div>
-                <md-button type="submit" class="md-raised md-primary" style="width: 250px; height: 20px; top: 8px">Escalonar
+                <md-button type="submit" class="md-raised md-primary" style="width: 120px; height: 20px; top: 8px">Escalonar
                 </md-button>
             </form>
-            
-            <form flex name="rotacionar" layout="column" style="margin: 5px;" ng-submit="rotacionar()">
+            <md-divider></md-divider>            
+            <form name="formRotacionar" layout="column" style="margin: 5px;" ng-submit="rotacionar()">
                 <div layout="row">
-                    <md-input-container layout="row" flex="50">
-                        <label> Centro de rotação X</label>
-                        <input type="number" ng-model="xRotacionar" name="xRotacionar">
-                        <div ng-messages="rotacionar.x.$error" role="alert">
+                    <md-input-container  flex>
+                        <label>Centro rotação X</label>
+                        <input type="number" ng-model="xRotacionar" name="xRotacionar" required>
+                        <div ng-messages="formRotacionar.xRotacionar.$error" role="alert">
                             <div ng-message="required">X é obrigatório</div>
                             <div ng-message="number">X não é um número válido</div>
                         </div>
                     </md-input-container>
-                    <md-input-container layout="row" flex="50">
-                        <label> Centro de rotação Y</label>
-                        <input type="number" ng-model="yRotacionar" name="yRotacionar">
-                        <div ng-messages="rotacionar.y.$error" role="alert">
+                    <md-input-container flex>
+                        <label>Centro rotação Y</label>
+                        <input type="number" ng-model="yRotacionar" name="yRotacionar" required>
+                        <div ng-messages="formRotacionar.yRotacionar.$error" role="alert">
                             <div ng-message="required">Y é obrigatório</div>
                             <div ng-message="number">Y não é um número válido</div>
                         </div>
@@ -75,12 +75,12 @@
 
                 <div layout="row" flex>
                     <div layout="row" flex>
-                        <md-input-container layout="row" flex="100">
-                            <label>Raio</label>
-                            <input type="number" ng-model="raioRotacionar" name="raioRotacionar">
-                            <div ng-messages="rotacionar.raio.$error" role="alert">
-                                <div ng-message="required">Raio é obrigatório</div>
-                                <div ng-message="number">Raio não é um número válido</div>
+                        <md-input-container  flex="100">
+                            <label>Ângulo</label>
+                            <input type="number" ng-model="anguloRotacionar" name="anguloRotacionar" required>
+                            <div ng-messages="formRotacionar.anguloRotacionar.$error" role="alert">
+                                <div ng-message="required">Ângulo é obrigatório</div>
+                                <div ng-message="number">Ângulo não é um número válido</div>
                             </div>
                         </md-input-container>
                     </div>
