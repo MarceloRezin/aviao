@@ -49,6 +49,14 @@ aviaoApp.factory('Aviao', function(Utils) {
         this.velocidade = velocidade;
     };
 
+    Aviao.prototype.getVelocidadeMS = function () {
+        if(!this.velocidade){
+            return 0;
+        }
+
+        return this.velocidade / 3.6;
+    };
+
     Aviao.prototype.getDirecao = function () {
         return this.direcao
     };

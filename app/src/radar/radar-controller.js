@@ -1,4 +1,6 @@
-aviaoApp.controller('RadarCtrl', function() {
+aviaoApp.controller('RadarCtrl', function(AviaoService) {
+
+    var aviaoIco = document.getElementById('aviao');
 
     var canvas = document.getElementById('radar');
     var ctx = canvas.getContext('2d');
@@ -12,6 +14,11 @@ aviaoApp.controller('RadarCtrl', function() {
 
     canvas.width = LARGURA;
     canvas.height = ALTURA;
+
+    var FPS = 10;
+    var METROS_POR_PX = 100;
+
+    console.log(LARGURA);
 
     function desenhaFundo(){
         ctx.fillStyle = "#000000";
@@ -74,12 +81,44 @@ aviaoApp.controller('RadarCtrl', function() {
             ctx.fillText(n, -6,  - (55 + (60 * i)));
             ctx.rotate(  - 15 * Math.PI / 180);
         }
+
+        ctx.rotate(0);
+    }
+
+    function desenharAvioes() {
+        var avioes = AviaoService.getAvioesSelecionados();
+
+        // ctx.rotate(0);
+
+        for(var i=0; i<avioes.length; i++){
+            ctx.save();
+
+            var aviao = avioes[i];
+
+            // var x = aviao.getX() -5;
+            // var y = aviao.getY() -5;
+
+            ctx.translate(aviao.getX(), aviao.getY());
+            aviao.setX(aviao.getX() + (aviao.getVelocidadeMS() / METROS_POR_PX / FPS));
+
+            ctx.rotate(aviao.getDirecao() * Math.PI / 180);
+
+            ctx.drawImage(aviaoIco, -5, -5, 10, 10);
+            ctx.restore();
+        }
     }
 
     function render() {
         desenhaFundo();
         desenhaCentro();
         desenhaMarcacoes();
+        desenharAvioes();
+
+        ctx.translate(- MEIA_LARGURA, - MEIA_ALTURA);
+
+        setTimeout(function () {
+            render();
+        }, 1000 / FPS);
     }
 
     function init() {
