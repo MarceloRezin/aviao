@@ -9,7 +9,7 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
           avioesSelecionados.forEach(function(element) {
             if(element.getRaio() <= $scope.distanciaAeroporto){
               avioesDistMin.push(element);
-              Console.push('Avião '+ element.getMatricula() +', está a '+ Math.ceil(element.getRaio()*100) +' metros da base.');
+              Console.push('Avião '+ element.getMatricula() +', está a '+ Math.ceil(element.getRaio()) +'PXs da base.');
             }
           });
             alert("Distancia Minima da Base: " + $scope.distanciaAeroporto)
@@ -36,7 +36,7 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
               result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
               if(result <= $scope.distanciaAvioes){
                   avioesProx.push(avSelecionados, avTodos);
-                  Console.push('Os aviões '+ avSelecionados.getMatricula() +' - '+ avTodos.getMatricula() + ', estão a '+ Math.ceil(result*100) +' metros.');
+                  Console.push('Os aviões '+ avSelecionados.getMatricula() +' - '+ avTodos.getMatricula() + ', estão a '+ Math.ceil(result) + 'PXs.');
               }
             });
           });
