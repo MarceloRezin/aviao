@@ -104,7 +104,7 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
 
             ctx.rotate(aviao.getDirecao() * Math.PI / 180);
 
-            ctx.drawImage(aviaoIco, -5, -5, 10, 10);
+            ctx.drawImage(aviaoIco, - aviao.getLargura() / 2, - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
             ctx.restore();
         }
     }
