@@ -109,13 +109,17 @@ aviaoApp.factory('Aviao', function(Utils) {
     };
 
     Aviao.prototype.escalonar = function (x,y) {        
-       this.x *= x;
-       this.y *= y; 
+       this.largura += this.largura * x/100;
+       this.altura += this.altura * y/100; 
     };
 
     Aviao.prototype.rotacionar = function (x, y, angulo) {
-        this.x = x * Math.cos(angulo * Math.PI / 180) - y * Math.sin(angulo * Math.PI / 180);
-        this.y = y * Math.cos(angulo * Math.PI / 180) + x * Math.sin(angulo * Math.PI / 180);
+        this.translandar(x,y);
+
+        this.x = this.x * Math.cos(angulo * Math.PI / 180) - this.y * Math.sin(angulo * Math.PI / 180);
+        this.y = this.y * Math.cos(angulo * Math.PI / 180) + this.x * Math.sin(angulo * Math.PI / 180);
+
+        this.translandar( x * -1,  y* -1);
     };
 
     Aviao.prototype.getVisivel = function () {
