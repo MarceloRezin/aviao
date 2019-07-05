@@ -36,7 +36,7 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
               result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
               if(result <= $scope.distanciaAvioes){
                   avioesProx.push(avSelecionados, avTodos);
-                  Console.push('Avião '+ avSelecionados.getMatricula() +', está a '+ Math.ceil(result*100) +' metros do ' + avTodos.getMatricula());
+                  Console.push('Os aviões '+ avSelecionados.getMatricula() +' - '+ avTodos.getMatricula() + ', estão a '+ Math.ceil(result*100) +' metros.');
               }
             });
           });
