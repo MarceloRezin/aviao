@@ -98,13 +98,17 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
             var x = aviao.getX();
             var y = - aviao.getY();
             ctx.translate(x, y);
-            aviao.setX(x + (aviao.getVelocidadeMS() / METROS_POR_PX / FPS));
+
+            //Movimenta o avião
+            var raio = aviao.getVelocidadeMS() / METROS_POR_PX / FPS;
+            aviao.setX(x + toXPolar(raio, aviao.getDirecao()));
+            aviao.setY(aviao.getY() + toYPolar(raio, aviao.getDirecao()));
 
             desenhaTextoAviao(aviao, x, y);
 
-            ctx.rotate(aviao.getDirecao() * Math.PI / 180);
-
+            ctx.rotate(- aviao.getDirecao() * Math.PI / 180);
             ctx.drawImage(aviaoIco, - aviao.getLargura() / 2, - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+
             ctx.restore();
         }
     }
@@ -133,6 +137,16 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
 
     function init() {
         render();
+    }
+
+    // X = raio * cos(angulo)
+    function toXPolar(raio, angulo){
+        return raio * Math.cos( angulo * Math.PI/180 );
+    }
+
+    // Y = r . sin(angulo)
+    function toYPolar(raio, angulo){
+        return raio * Math.sin( angulo * Math.PI/180 );
     }
 
     init();
