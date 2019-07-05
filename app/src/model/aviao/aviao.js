@@ -120,9 +120,9 @@ aviaoApp.factory('Aviao', function(Utils) {
         this.y += y;
     };
 
-    Aviao.prototype.escalonar = function (x,y) {        
-       this.largura += this.largura * x/100;
-       this.altura += this.altura * y/100; 
+    Aviao.prototype.escalonar = function (x,y) {
+        this.x *= x / 100;
+        this.y *= y / 100;
     };
 
     Aviao.prototype.rotacionar = function (x, y, angulo) {
