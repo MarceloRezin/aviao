@@ -130,11 +130,14 @@ aviaoApp.controller('RadarCtrl', function($scope, AviaoService) {
 
     function desenhaTextoAviao(aviao, x, y) {
         ctx.font = '9px Courier New';
-        ctx.fillText(aviao.getMatricula(), -15, 15);
-        ctx.fillText(aviao.getVelocidade() + ' Km/h', -15, 23);
-        ctx.fillText('X: ' + Math.floor(x), -15, 31);
-        ctx.fillText('Y: ' + Math.floor(y) * -1, -15, 39);
-        ctx.fillText('D: ' + aviao.getDirecao() + '°', -15, 47);
+
+        var meiaAltura = aviao.getAltura() / 2;
+
+        ctx.fillText(aviao.getMatricula(), -15, meiaAltura + 10);
+        ctx.fillText(aviao.getVelocidade() + ' Km/h', -15, meiaAltura + 20);
+        ctx.fillText('X: ' + Math.floor(x), -15, meiaAltura + 29);
+        ctx.fillText('Y: ' + Math.floor(y) * -1, -15, meiaAltura + 39);
+        ctx.fillText('D: ' + aviao.getDirecao() + '°', -15, meiaAltura + 47);
     }
 
     function render() {
