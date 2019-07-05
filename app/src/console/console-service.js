@@ -46,9 +46,14 @@ aviaoApp.factory('Console', function () {
             return historico;
         }
 
+        function _limpar() {
+            historico = [];
+        }
+
         return {
             push: _push,
-            getHistorico: _getHistorico
+            getHistorico: _getHistorico,
+            limpar: _limpar
         };
     }
 

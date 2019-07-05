@@ -40,7 +40,6 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
               }
             });
           });
-          alert("Distancia Minima Entre Aviões: " + $scope.distanciaAvioes)
           return avioesProx;
         }
     }
