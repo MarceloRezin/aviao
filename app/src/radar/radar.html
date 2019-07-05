@@ -1,3 +1,11 @@
 <div ng-controller="RadarCtrl" style="height: 80vh">
     <canvas id="radar"></canvas>
+    <div flex layout="row" layout-align="end" style="margin-top: -13vh; margin-right: 10px">
+        <md-button ng-if="!pause" ng-click="invertePause()" class="md-fab" style="background-color: #FF5722">
+            <md-icon>pause</md-icon>
+        </md-button>
+        <md-button ng-if="pause" ng-click="invertePause()" class="md-fab" style="background-color: #4CAF50">
+            <md-icon>play_arrow</md-icon>
+        </md-button>
+    </div>
 </div>

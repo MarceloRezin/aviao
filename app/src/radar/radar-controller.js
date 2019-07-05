@@ -1,4 +1,10 @@
-aviaoApp.controller('RadarCtrl', function(AviaoService) {
+aviaoApp.controller('RadarCtrl', function($scope, AviaoService) {
+
+    $scope.pause = false;
+
+    $scope.invertePause = function () {
+        $scope.pause = !$scope.pause;
+    };
 
     var aviaoIco = document.getElementById('aviao');
 
@@ -23,6 +29,14 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
     function desenhaFundo(){
         ctx.fillStyle = "#000000";
         ctx.fillRect (0, 0, LARGURA, ALTURA );
+
+        if($scope.pause){
+            ctx.beginPath();
+            ctx.strokeStyle = '#FF5722';
+            ctx.lineWidth = 15;
+            ctx.rect(0, 0, LARGURA, ALTURA);
+            ctx.stroke();
+        }
     }
 
     function desenhaCentro(){
@@ -97,10 +111,12 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
             var y = - aviao.getY();
             ctx.translate(x, y);
 
-            //Movimenta o avião
-            var raio = aviao.getVelocidadeMS() / METROS_POR_PX / FPS;
-            aviao.setX(x + toXPolar(raio, aviao.getDirecao()));
-            aviao.setY(aviao.getY() + toYPolar(raio, aviao.getDirecao()));
+            if(!$scope.pause){
+                //Movimenta o avião
+                var raio = aviao.getVelocidadeMS() / METROS_POR_PX / FPS;
+                aviao.setX(x + toXPolar(raio, aviao.getDirecao()));
+                aviao.setY(aviao.getY() + toYPolar(raio, aviao.getDirecao()));
+            }
 
             if(aviao.getVisivel()){
                 desenhaTextoAviao(aviao, x, y);
