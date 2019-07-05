@@ -9,7 +9,7 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
           avioesSelecionados.forEach(function(element) {
             if(element.getRaio() <= $scope.distanciaAeroporto){
               avioesDistMin.push(element);
-              Console.push('Avião '+ element.getMatricula() +', está a '+ Math.ceil(element.getRaio()) +' KM da base.');
+              Console.push('Avião '+ element.getMatricula() +', está a '+ Math.ceil(element.getRaio()*100) +' metros da base.');
             }
           });
             alert("Distancia Minima da Base: " + $scope.distanciaAeroporto)
@@ -21,18 +21,27 @@ aviaoApp.controller('RastreamentoCtrl', function($scope,AviaoService,Console) {
         if($scope.distanciaAvioes == null || $scope.distanciaAvioes === "undefined"){
             $scope.distanciaAvioesErro = true;
         }else{
+          var avioesProx = []
           var avioesSelecionados =  AviaoService.getAvioesSelecionados();
           var todosAvioes = AviaoService.getAvioes().slice();
           avioesSelecionados.forEach(function(avSelecionados) {
             todosAvioes.forEach(function(avTodos) {
-              if(avTodos.getMatricula() == avSelecionados.getMatricula()){
-                todosAvioes.splice(avTodos.indexOf(avTodos), 1);
+              if(avSelecionados.getMatricula() == avTodos.getMatricula()){
+                var index = todosAvioes.indexOf(avTodos);
+                todosAvioes.splice(index, 1);
               }
+            });
+            todosAvioes.forEach(function(avTodos) {
+
               result = Math.sqrt(Math.pow(avSelecionados.getX() - avTodos.getX(),2) + Math.pow(avSelecionados.getY() - avTodos.getY(),2));
-              console.log(" "+ avSelecionados.getMatricula() +" = "+ avTodos.getMatricula() + " "+result );
+              if(result <= $scope.distanciaAvioes){
+                  avioesProx.push(avSelecionados, avTodos);
+                  Console.push('Avião '+ avSelecionados.getMatricula() +', está a '+ Math.ceil(result*100) +' metros do ' + avTodos.getMatricula());
+              }
             });
           });
           alert("Distancia Minima Entre Aviões: " + $scope.distanciaAvioes)
+          return avioesProx;
         }
     }
 
