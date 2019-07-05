@@ -18,4 +18,14 @@ aviaoApp.controller('EntradaCtrl', function($scope, AviaoService, Aviao) {
         AviaoService.addAviao(aviao);
     };
 
+    $scope.$on('EDITAR_AVIAO', function(event, aviao) {
+        console.log(aviao);
+        // aviao.setDirecao(90);
+
+        $scope.x = aviao.getX();
+        $scope.y = aviao.getY();
+        $scope.velocidade = aviao.getVelocidade();
+        $scope.direcao = aviao.getDirecao();
+
+    });
 });

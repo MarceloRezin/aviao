@@ -1,4 +1,4 @@
-aviaoApp.controller('GridCtrl', function($scope, AviaoService, $mdDialog) {
+aviaoApp.controller('GridCtrl', function($scope, AviaoService, $mdDialog, $rootScope) {
 
     $scope.getAvioes = function () {
         return AviaoService.getAvioes();
@@ -18,4 +18,8 @@ aviaoApp.controller('GridCtrl', function($scope, AviaoService, $mdDialog) {
             //Não faz nada ao cancelar
         });
     };
+
+    $scope.editar = function (aviao) {
+        $rootScope.$broadcast('EDITAR_AVIAO', aviao);
+    }
 });
