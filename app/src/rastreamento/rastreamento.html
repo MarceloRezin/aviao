@@ -8,42 +8,42 @@
         <div flex style="margin: 5px" >
             <div layout="column" flex>
                 <form name="distAero" layout="row">
-                    <md-input-container>
+                    <md-input-container flex>
                         <label>Dist. Min. Aeroporto </label>
                         <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAeroporto" name="distanciaAeroporto" ng-required="distanciaAeroportoErro">
                         <div ng-messages="distAero.distanciaAeroporto.$error" role="alert">
                             <div ng-message="required">Distância é obrigatória</div>
                         </div>
                     </md-input-container>
-                    <md-button ng-click="verificarDistAero()" class="md-fab md-mini">
+                    <md-button ng-click="verificarDistAero()" class="md-fab md-primary md-mini">
                         <md-icon>keyboard_return</md-icon>
                     </md-button>
                 </form>
 
-                <form name="distAV">
-                    <md-input-container layout="row">
-                        <div layout="column" flex="100">
-                            <label>Distância Minima entre Aviçoes</label>
-                            <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAvioes" name="distanciaAvioes" ng-required="distanciaAvioesErro">
-                            <div ng-messages="distAV.distanciaAvioes.$error" role="alert">
-                                <div ng-message="required">Distância é obrigatória</div>
-                            </div>
-                        </div>
+                <form name="distAV" layout="row">
+                    <md-input-container flex>
+                      <label>Dist. Min. Aviões</label>
+                      <input ng-focus="zeraCampos()" type="number" ng-model="distanciaAvioes" name="distanciaAvioes" ng-required="distanciaAvioesErro">
+                      <div ng-messages="distAV.distanciaAvioes.$error" role="alert">
+                          <div ng-message="required">Distância é obrigatória</div>
+                      </div>
                     </md-input-container>
-                    <md-button ng-click="verificarDistAv()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                    <md-button ng-click="verificarDistAv()" class="md-fab md-primary md-mini">
+                      <md-icon>keyboard_return</md-icon>
+                    </md-button>
                 </form>
 
-                <form name="tempoCol">
-                    <md-input-container layout="row">
-                        <div layout="column" flex="100">
-                            <label>Tempo Minimo Rota de </label>
-                            <input ng-focus="zeraCampos()" type="number" ng-model="tempoColisao" name="tempoColisao" ng-required="tempoColisaoErro">
-                            <div ng-messages="tempoCol.tempoColisao.$error" role="alert">
-                                <div ng-message="required">Distância é obrigatória</div>
-                            </div>
-                        </div>
+                <form name="tempoCol" layout="row">
+                    <md-input-container flex>
+                      <label>Tempo Min. Rota Colisão </label>
+                      <input ng-focus="zeraCampos()" type="number" ng-model="tempoColisao" name="tempoColisao" ng-required="tempoColisaoErro">
+                      <div ng-messages="tempoCol.tempoColisao.$error" role="alert">
+                          <div ng-message="required">Tempo Min. Rota Colisão é obrigatória</div>
+                      </div>
                     </md-input-container>
-                    <md-button ng-click="verificarTempoColisao()" class="md-raised md-primary" style="width: 150px; height: 20px;">Analisar Aviões</md-button>
+                    <md-button ng-click="verificarTempoColisao()" class="md-fab md-primary md-mini">
+                      <md-icon>keyboard_return</md-icon>
+                    </md-button>
                 </form>
 
             </div>

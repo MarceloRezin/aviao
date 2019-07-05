@@ -10,6 +10,9 @@ aviaoApp.factory('Aviao', function(Utils) {
     }
 
     Aviao.prototype.getX = function () {
+      if(this.x == null){
+        return this.raio*Math.cos(this.raio);
+      }
         return this.x;
     };
 
@@ -18,6 +21,9 @@ aviaoApp.factory('Aviao', function(Utils) {
     };
 
     Aviao.prototype.getY = function () {
+      if(this.y == null){
+        return this.raio*Math.sen(this.raio);
+      }
         return this.y;
     };
 
@@ -26,6 +32,9 @@ aviaoApp.factory('Aviao', function(Utils) {
     };
 
     Aviao.prototype.getRaio = function () {
+      if(this.raio == null){
+        return Math.sqrt(Math.pow(this.x,2)+Math.pow(this.y,2));
+      }
         return this.raio;
     };
 
@@ -34,6 +43,9 @@ aviaoApp.factory('Aviao', function(Utils) {
     };
 
     Aviao.prototype.getAngulo = function () {
+      if(this.angulo == null){
+        return Math.atan2( this.x , this.y )*180.0/Math.PI;
+      }
         return this.angulo;
     };
 

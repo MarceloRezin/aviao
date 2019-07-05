@@ -65,7 +65,7 @@
                 </md-input-container>
             </div>
             <div flex="15" layout="row" layout-align="end">
-                <md-switch md-invert ng-model="switchPolar" aria-label="Switch 1">
+                <md-switch md-invert ng-model="switchPolar" ng-change="limpaCampos()" aria-label="Switch 1">
                     Polar
                 </md-switch>
                 <md-button type="submit" class="md-raised md-primary">
