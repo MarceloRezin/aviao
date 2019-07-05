@@ -69,6 +69,32 @@ aviaoApp.factory('Aviao', function(Utils) {
         return this.matricula;
     };
 
+    Aviao.prototype.getAltura = function () {
+
+        if(this.altura == null){
+            this.altura = 10;
+        }
+
+        return this.altura;
+    };
+
+    Aviao.prototype.setAltura = function (altura) {
+        this.altura = altura;
+    };
+
+    Aviao.prototype.getLargura = function () {
+
+        if(this.largura == null){
+            this.largura = 10;
+        }
+
+        return this.largura;
+    };
+
+    Aviao.prototype.setLargura = function (largura) {
+        this.largura = largura;
+    };
+
     Aviao.prototype.isSelecionado = function () {
         return this.selecionado;
     };
