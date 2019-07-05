@@ -9,6 +9,12 @@
             <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="aviao in getAvioes()" flex layout="row">
                 <md-checkbox class="md-primary" ng-model="aviao.selecionado" aria-label="Selecionar Avião"></md-checkbox>
                 <p ng-bind="aviao.getMatricula()"></p>
+                <md-button ng-if="aviao.getVisivel()" class="md-icon-button" aria-label="Remover" ng-click="aviao.setVisivel(false)">
+                    <md-icon class="material-icons">visibility</md-icon>
+                </md-button>
+                <md-button ng-if="!aviao.getVisivel()" class="md-icon-button" aria-label="Remover" ng-click="aviao.setVisivel(true)">
+                    <md-icon class="material-icons">visibility_off</md-icon>
+                </md-button>
                 <md-button class="md-icon-button" aria-label="Remover" ng-click="removerAviao($index)">
                     <md-icon class="material-icons">delete</md-icon>
                 </md-button>

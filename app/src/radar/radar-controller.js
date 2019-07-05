@@ -86,9 +86,7 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
     }
 
     function desenharAvioes() {
-        var avioes = AviaoService.getAvioesSelecionados();
-
-        // ctx.rotate(0);
+        var avioes = AviaoService.getAvioes();
 
         for(var i=0; i<avioes.length; i++){
             ctx.save();
@@ -104,10 +102,11 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
             aviao.setX(x + toXPolar(raio, aviao.getDirecao()));
             aviao.setY(aviao.getY() + toYPolar(raio, aviao.getDirecao()));
 
-            desenhaTextoAviao(aviao, x, y);
-
-            ctx.rotate(- aviao.getDirecao() * Math.PI / 180);
-            ctx.drawImage(aviaoIco, - aviao.getLargura() / 2, - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+            if(aviao.getVisivel()){
+                desenhaTextoAviao(aviao, x, y);
+                ctx.rotate(- aviao.getDirecao() * Math.PI / 180);
+                ctx.drawImage(aviaoIco, - aviao.getLargura() / 2, - aviao.getAltura() / 2, aviao.getLargura(), aviao.getAltura());
+            }
 
             ctx.restore();
         }

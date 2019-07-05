@@ -118,5 +118,19 @@ aviaoApp.factory('Aviao', function(Utils) {
         this.y = y * Math.cos(angulo * Math.PI / 180) + x * Math.sin(angulo * Math.PI / 180);
     };
 
+    Aviao.prototype.getVisivel = function () {
+        if(this.visivel == null){
+            this.visivel = true;
+        }
+
+        return this.visivel;
+    };
+
+    Aviao.prototype.setVisivel = function (visivel) {
+        this.visivel = visivel;
+    };
+
+
+
     return Aviao;
 });
