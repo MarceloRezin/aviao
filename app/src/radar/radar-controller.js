@@ -39,7 +39,7 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
     }
 
     function desenhaMarcacoes() {
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
         ctx.lineWidth = 2;
 
         var i;
@@ -52,7 +52,7 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
 
         i--;
 
-        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
         ctx.translate(LARGURA / 2, ALTURA / 2);
 
         for(var j=0; j<8; j++){
