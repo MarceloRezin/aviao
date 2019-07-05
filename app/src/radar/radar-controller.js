@@ -95,17 +95,27 @@ aviaoApp.controller('RadarCtrl', function(AviaoService) {
 
             var aviao = avioes[i];
 
-            // var x = aviao.getX() -5;
-            // var y = aviao.getY() -5;
+            var x = aviao.getX();
+            var y = - aviao.getY();
+            ctx.translate(x, y);
+            aviao.setX(x + (aviao.getVelocidadeMS() / METROS_POR_PX / FPS));
 
-            ctx.translate(aviao.getX(), aviao.getY());
-            aviao.setX(aviao.getX() + (aviao.getVelocidadeMS() / METROS_POR_PX / FPS));
+            desenhaTextoAviao(aviao, x, y);
 
             ctx.rotate(aviao.getDirecao() * Math.PI / 180);
 
             ctx.drawImage(aviaoIco, -5, -5, 10, 10);
             ctx.restore();
         }
+    }
+
+    function desenhaTextoAviao(aviao, x, y) {
+        ctx.font = '9px Courier New';
+        ctx.fillText(aviao.getMatricula(), -15, 15);
+        ctx.fillText(aviao.getVelocidade() + ' Km/h', -15, 23);
+        ctx.fillText('X: ' + Math.floor(x), -15, 31);
+        ctx.fillText('Y: ' + Math.floor(y), -15, 39);
+        ctx.fillText('D: ' + aviao.getDirecao() + '°', -15, 47);
     }
 
     function render() {
