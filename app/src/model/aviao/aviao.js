@@ -126,12 +126,29 @@ aviaoApp.factory('Aviao', function(Utils) {
     };
 
     Aviao.prototype.rotacionar = function (x, y, angulo) {
-        this.translandar( x * -1,y * -1);
+        // this.translandar( x * -1,y * -1);
 
-        this.x = this.x * Math.cos(angulo * Math.PI / 180) - this.y * Math.sin(angulo * Math.PI / 180);
-        this.y = this.y * Math.cos(angulo * Math.PI / 180) + this.x * Math.sin(angulo * Math.PI / 180);
 
-        this.translandar(x,y);
+        var a = Math.atan2( this.x , this.y )*180.0/Math.PI;
+        var r = Math.sqrt(Math.pow(this.x,2)+Math.pow(this.y,2));
+
+        a *= -1;
+
+        a +=  angulo;
+
+        console.log(a);
+
+        if(a < 0 ){
+          a += 360;
+        }
+
+        this.x = r * Math.cos( a * Math.PI/180 );
+        this.y = r * Math.sin( a * Math.PI/180 );
+
+        // this.x = (this.x * Math.cos(angulo * Math.PI / 180)) - (this.y * Math.sin(angulo * Math.PI / 180));
+        // this.y = (this.y * Math.cos(angulo * Math.PI / 180)) + (this.x * Math.sin(angulo * Math.PI / 180));
+
+        // this.translandar(x,y);
     };
 
     Aviao.prototype.getVisivel = function () {
