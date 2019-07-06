@@ -10,10 +10,10 @@ var aviaoApp = angular.module('AviaoApp', ['ngMaterial', 'ngMessages'])
     Console.push('Radar iniciado');
 
     var a = new Aviao();
-    a.setX(-300);
-    a.setY(15);
+    a.setX(0);
+    a.setY(100);
     a.setDirecao(0);
-    a.setVelocidade(828);
+    a.setVelocidade(0);
 
     var b = new Aviao();
     b.setX(114);
